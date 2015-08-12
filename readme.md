@@ -24,6 +24,9 @@ var newObject = filterObj(obj, function (key, value, object) {
 	return value === true;
 });
 //=> {foo: true}
+
+var newObject2 = filterObj(obj, ['bar']);
+//=> {bar: true}
 ```
 
 
