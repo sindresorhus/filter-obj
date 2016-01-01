@@ -1,28 +1,14 @@
-'use strict';
-var test = require('ava');
-var fn = require('./');
+import test from 'ava';
+import m from './';
 
-test('funciton predicate', function (t) {
-	t.assert(Object.keys(fn({foo: true, bar: false}, function () {
-		return true;
-	})).length === 2);
-
-	t.assert(Object.keys(fn({foo: true, bar: false}, function () {
-		return false;
-	})).length === 0);
-
-	t.assert(Object.keys(fn({foo: true, bar: false}, function (key, val) {
-		return val === true;
-	})).length === 1);
-
-	t.end();
+test('function predicate', t => {
+	t.is(Object.keys(m({foo: true, bar: false}, () => true)).length, 2);
+	t.is(Object.keys(m({foo: true, bar: false}, () => false)).length, 0);
+	t.is(Object.keys(m({foo: true, bar: false}, (key, val) => val === true)).length, 1);
 });
 
-test('array predicate', function (t) {
-	var x = Object.keys(fn({foo: true, bar: false}, ['foo']));
-
-	t.assert(x[0] === 'foo');
-	t.assert(x.length === 1);
-
-	t.end();
+test('array predicate', t => {
+	const x = Object.keys(m({foo: true, bar: false}, ['foo']));
+	t.is(x[0], 'foo');
+	t.is(x.length, 1);
 });
