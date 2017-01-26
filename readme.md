@@ -24,7 +24,7 @@ const newObject = filterObj(obj, (key, value) => value === true);
 //=> {foo: true}
 
 const newObject2 = filterObj(obj, ['bar']);
-//=> {bar: true}
+//=> {bar: false}
 ```
 
 
