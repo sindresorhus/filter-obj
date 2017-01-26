@@ -1,5 +1,5 @@
 import test from 'ava';
-import m from './';
+import m from '.';
 
 test('function predicate', t => {
 	t.is(Object.keys(m({foo: true, bar: false}, () => true)).length, 2);

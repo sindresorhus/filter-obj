@@ -34,13 +34,13 @@ const newObject2 = filterObj(obj, ['bar']);
 
 #### source
 
-Type: `object`
+Type: `Object`
 
 Source object to filter properties from.
 
 #### filter
 
-Type: `array` `function`
+Type: `Array` `Function`
 
 Array of properties that should be filtered from the object or a filter function. The function has the signature `filterFn(sourceKey, sourceValue, source)`.
 
@@ -48,9 +48,8 @@ Array of properties that should be filtered from the object or a filter function
 ## Related
 
 - [map-obj](https://github.com/sindresorhus/map-obj) - Map object keys and values into a new object
-- [object-assign](https://github.com/sindresorhus/object-assign) - Copy enumerable own properties from one or more source objects to a target object
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
