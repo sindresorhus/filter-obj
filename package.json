@@ -1,37 +1,39 @@
 {
-  "name": "filter-obj",
-  "version": "1.1.0",
-  "description": "Filter object keys and values into a new object",
-  "license": "MIT",
-  "repository": "sindresorhus/filter-obj",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "filter",
-    "obj",
-    "object",
-    "key",
-    "keys",
-    "value",
-    "values",
-    "val",
-    "iterate",
-    "iterator"
-  ],
-  "devDependencies": {
-    "ava": "*",
-    "xo": "*"
-  }
+	"name": "filter-obj",
+	"version": "1.1.0",
+	"description": "Filter object keys and values into a new object",
+	"license": "MIT",
+	"repository": "sindresorhus/filter-obj",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"keywords": [
+		"filter",
+		"obj",
+		"object",
+		"key",
+		"keys",
+		"value",
+		"values",
+		"val",
+		"iterate",
+		"iterator"
+	],
+	"devDependencies": {
+		"ava": "^1.4.1",
+		"tsd": "^0.7.2",
+		"xo": "^0.24.0"
+	}
 }

@@ -1,14 +1,14 @@
 import test from 'ava';
-import m from '.';
+import filterObject from '.';
 
 test('function predicate', t => {
-	t.is(Object.keys(m({foo: true, bar: false}, () => true)).length, 2);
-	t.is(Object.keys(m({foo: true, bar: false}, () => false)).length, 0);
-	t.is(Object.keys(m({foo: true, bar: false}, (key, val) => val === true)).length, 1);
+	t.is(Object.keys(filterObject({foo: true, bar: false}, () => true)).length, 2);
+	t.is(Object.keys(filterObject({foo: true, bar: false}, () => false)).length, 0);
+	t.is(Object.keys(filterObject({foo: true, bar: false}, (key, value) => value === true)).length, 1);
 });
 
 test('array predicate', t => {
-	const x = Object.keys(m({foo: true, bar: false}, ['foo']));
-	t.is(x[0], 'foo');
-	t.is(x.length, 1);
+	const filteredKeys = Object.keys(filterObject({foo: true, bar: false}, ['foo']));
+	t.is(filteredKeys[0], 'foo');
+	t.is(filteredKeys.length, 1);
 });
