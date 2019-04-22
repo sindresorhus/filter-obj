@@ -43,13 +43,14 @@ Source object to filter properties from.
 
 Type: `Function`
 
-A predicate function that detemines whether a property should be assigned to the new object. The function has the signature `filterFn(sourceKey, sourceValue, source)`.
+A predicate function that detemines whether a property should be assigned to the new object. The function has the signature `filterFunction(sourceKey, sourceValue, source)`.
 
 #### includeKeys
 
 Type: `string[]`
 
 Array of property names that should be assigned to the new object.
+
 
 ## Related
 

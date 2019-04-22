@@ -2,7 +2,7 @@
 Filter object keys and values into a new object.
 
 @param object - Source object to filter properties from.
-@param predicate - A predicate function that detemines whether a property should be assigned to the new object.
+@param predicate - Predicate function that detemines whether a property should be assigned to the new object.
 @param includeKeys - Property names that should be assigned to the new object.
 
 @example
