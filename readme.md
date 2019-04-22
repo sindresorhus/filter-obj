@@ -6,44 +6,50 @@
 ## Install
 
 ```
-$ npm install --save filter-obj
+$ npm install filter-obj
 ```
 
 
 ## Usage
 
 ```js
-const filterObj = require('filter-obj');
+const filterObject = require('filter-obj');
 
-const obj = {
+const object = {
 	foo: true,
 	bar: false
 };
 
-const newObject = filterObj(obj, (key, value) => value === true);
+const newObject = filterObject(object, (key, value) => value === true);
 //=> {foo: true}
 
-const newObject2 = filterObj(obj, ['bar']);
+const newObject2 = filterObject(object, ['bar']);
 //=> {bar: false}
 ```
 
 
 ## API
 
-### filterObj(source, filter)
+### filterObject(source, filter)
+### filterObject(source, includeKeys)
 
 #### source
 
-Type: `Object`
+Type: `object`
 
 Source object to filter properties from.
 
 #### filter
 
-Type: `Array` `Function`
+Type: `Function`
 
-Array of properties that should be filtered from the object or a filter function. The function has the signature `filterFn(sourceKey, sourceValue, source)`.
+A predicate function that detemines whether a property should be assigned to the new object. The function has the signature `filterFn(sourceKey, sourceValue, source)`.
 
+#### includeKeys
+
+Type: `string[]`
+
+Array of property names that should be assigned to the new object.
 
 ## Related
 

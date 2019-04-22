@@ -1,16 +1,13 @@
 'use strict';
-module.exports = (obj, predicate) => {
-	const ret = {};
-	const keys = Object.keys(obj);
+module.exports = (object, predicate) => {
+	const result = {};
 	const isArray = Array.isArray(predicate);
 
-	for (const key of keys) {
-		const val = obj[key];
-
-		if (isArray ? predicate.indexOf(key) !== -1 : predicate(key, val, obj)) {
-			ret[key] = val;
+	for (const [key, value] of Object.entries(object)) {
+		if (isArray ? predicate.indexOf(key) !== -1 : predicate(key, value, object)) {
+			result[key] = value;
 		}
 	}
 
-	return ret;
+	return result;
 };
