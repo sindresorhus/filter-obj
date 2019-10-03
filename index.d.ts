@@ -21,7 +21,7 @@ const newObject2 = filterObject(object, ['bar']);
 //=> {bar: false}
 ```
 */
-declare function filterObject<ObjectType extends {[key: string]: unknown}>(
+declare function filterObject<ObjectType extends {[key: string]: any}>(
 	object: ObjectType,
 	predicate: (
 		key: keyof ObjectType,
@@ -29,7 +29,7 @@ declare function filterObject<ObjectType extends {[key: string]: unknown}>(
 	) => boolean
 ): Partial<ObjectType>;
 declare function filterObject<
-	ObjectType extends {[key: string]: unknown},
+	ObjectType extends {[key: string]: any},
 	IncludedKeys extends keyof ObjectType
 >(
 	object: ObjectType,
