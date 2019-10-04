@@ -55,8 +55,3 @@ Array of property names that should be assigned to the new object.
 ## Related
 
 - [map-obj](https://github.com/sindresorhus/map-obj) - Map object keys and values into a new object
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
