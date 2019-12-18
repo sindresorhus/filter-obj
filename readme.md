@@ -13,7 +13,7 @@ $ npm install filter-obj
 ## Usage
 
 ```js
-const filterObject = require('filter-obj');
+import filterObject from 'filter-obj';
 
 const object = {
 	foo: true,
