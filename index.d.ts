@@ -36,4 +36,4 @@ declare function filterObject<
 	includeKeys: ReadonlyArray<IncludedKeys>
 ): Pick<ObjectType, IncludedKeys>;
 
-export = filterObject;
+export default filterObject;
