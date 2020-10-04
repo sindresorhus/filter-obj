@@ -41,9 +41,9 @@ Source object to filter properties from.
 
 #### filter
 
-Type: `Function`
+Type: `(sourceKey, sourceValue, source) => boolean`
 
-A predicate function that detemines whether a property should be assigned to the new object. The function has the signature `filterFunction(sourceKey, sourceValue, source)`.
+A predicate function that detemines whether a property should be assigned to the new object.
 
 #### includeKeys
 
