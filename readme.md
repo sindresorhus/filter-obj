@@ -1,4 +1,4 @@
-# filter-obj [![Build Status](https://travis-ci.org/sindresorhus/filter-obj.svg?branch=master)](https://travis-ci.org/sindresorhus/filter-obj)
+# filter-obj
 
 > Filter object keys and values into a new object
 
