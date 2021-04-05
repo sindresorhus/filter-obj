@@ -6,7 +6,12 @@ module.exports = (object, predicate) => {
 
 	for (const [key, value] of Object.entries(object)) {
 		if (isArray ? predicate.includes(key) : predicate(key, value, object)) {
-			result[key] = value;
+			Object.defineProperty(result, key, {
+				value,
+				writable: true,
+				enumerable: true,
+				configurable: true
+			});
 		}
 	}
 
