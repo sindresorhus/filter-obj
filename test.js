@@ -12,3 +12,8 @@ test('array predicate', t => {
 	t.is(filteredKeys[0], 'foo');
 	t.is(filteredKeys.length, 1);
 });
+
+test('__proto__ keys', t => {
+	const input = {['__proto__']: {foo: true}};
+	t.deepEqual(filterObject(input, () => true), input);
+});
