@@ -1,6 +1,6 @@
 {
 	"name": "filter-obj",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "Filter object keys and values into a new object",
 	"license": "MIT",
 	"repository": "sindresorhus/filter-obj",
