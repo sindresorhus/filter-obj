@@ -1,5 +1,5 @@
 import test from 'ava';
-import filterObject from '.';
+import filterObject from './index.js';
 
 test('function predicate', t => {
 	t.is(Object.keys(filterObject({foo: true, bar: false}, () => true)).length, 2);

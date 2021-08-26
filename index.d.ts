@@ -1,13 +1,13 @@
 /**
 Filter object keys and values into a new object.
 
-@param object - Source object to filter properties from.
+@param object - The source object to filter properties from.
 @param predicate - Predicate function that detemines whether a property should be assigned to the new object.
 @param includeKeys - Property names that should be assigned to the new object.
 
 @example
 ```
-import filterObject = require('filter-obj');
+import filterObject from 'filter-obj';
 
 const object = {
 	foo: true,
@@ -21,19 +21,17 @@ const newObject2 = filterObject(object, ['bar']);
 //=> {bar: false}
 ```
 */
-declare function filterObject<ObjectType extends {[key: string]: any}>(
+export default function filterObject<ObjectType extends Record<string, any>>(
 	object: ObjectType,
 	predicate: (
 		key: keyof ObjectType,
 		value: ObjectType[keyof ObjectType]
 	) => boolean
 ): Partial<ObjectType>;
-declare function filterObject<
-	ObjectType extends {[key: string]: any},
-	IncludedKeys extends keyof ObjectType
+export default function filterObject<
+	ObjectType extends Record<string, any>,
+	IncludedKeys extends keyof ObjectType,
 >(
 	object: ObjectType,
-	includeKeys: ReadonlyArray<IncludedKeys>
+	includeKeys: readonly IncludedKeys[]
 ): Pick<ObjectType, IncludedKeys>;
-
-export = filterObject;

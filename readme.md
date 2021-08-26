@@ -2,18 +2,16 @@
 
 > Filter object keys and values into a new object
 
-
 ## Install
 
 ```
 $ npm install filter-obj
 ```
 
-
 ## Usage
 
 ```js
-const filterObject = require('filter-obj');
+import filterObject from 'filter-obj';
 
 const object = {
 	foo: true,
@@ -27,7 +25,6 @@ const newObject2 = filterObject(object, ['bar']);
 //=> {bar: false}
 ```
 
-
 ## API
 
 ### filterObject(source, filter)
@@ -37,7 +34,7 @@ const newObject2 = filterObject(object, ['bar']);
 
 Type: `object`
 
-Source object to filter properties from.
+The source object to filter properties from.
 
 #### filter
 
@@ -49,8 +46,7 @@ A predicate function that detemines whether a property should be assigned to the
 
 Type: `string[]`
 
-Array of property names that should be assigned to the new object.
-
+An array of property names that should be assigned to the new object.
 
 ## Related
 

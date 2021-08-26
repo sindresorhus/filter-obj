@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = (object, predicate) => {
+export default function filterObject(object, predicate) {
 	const result = {};
 	const isArray = Array.isArray(predicate);
 
@@ -10,10 +8,10 @@ module.exports = (object, predicate) => {
 				value,
 				writable: true,
 				enumerable: true,
-				configurable: true
+				configurable: true,
 			});
 		}
 	}
 
 	return result;
-};
+}

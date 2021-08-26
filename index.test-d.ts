@@ -1,9 +1,9 @@
 import {expectType, expectError} from 'tsd';
-import filterObject = require('.');
+import filterObject from './index.js';
 
 const object = {
 	foo: 'foo',
-	bar: 1
+	bar: 1,
 };
 
 expectType<Partial<typeof object>>(
@@ -12,12 +12,10 @@ expectType<Partial<typeof object>>(
 		expectType<string | number>(value);
 
 		return false;
-	})
+	}),
 );
 expectError<typeof object>(
-	filterObject(object, () => {
-		return false;
-	})
+	filterObject(object, () => false),
 );
 expectType<{foo: string}>(filterObject(object, ['foo']));
 expectError<typeof object>(filterObject(object, ['foo']));
