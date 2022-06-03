@@ -4,8 +4,8 @@
 
 ## Install
 
-```
-$ npm install filter-obj
+```sh
+npm install filter-obj
 ```
 
 ## Usage
@@ -26,6 +26,8 @@ const newObject2 = filterObject(object, ['bar']);
 ```
 
 ## API
+
+Symbol keys are not copied over to the new object.
 
 ### filterObject(source, filter)
 ### filterObject(source, includeKeys)
