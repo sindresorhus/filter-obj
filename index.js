@@ -15,7 +15,9 @@ export default function filterObject(object, predicate) {
 			}
 		}
 	} else {
-		for (const [key, value] of Object.entries(object)) {
+		// `for ... of Object.keys()` is faster than `for ... of Object.entries()`.
+		for (const key of Object.keys(object)) {
+			const value = object[key];
 			if (predicate(key, value, object)) {
 				Object.defineProperty(result, key, {
 					value,
