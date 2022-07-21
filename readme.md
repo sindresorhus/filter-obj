@@ -11,26 +11,34 @@ npm install filter-obj
 ## Usage
 
 ```js
-import filterObject from 'filter-obj';
+import {includeKeys, excludeKeys} from 'filter-obj';
 
 const object = {
 	foo: true,
 	bar: false
 };
 
-const newObject = filterObject(object, (key, value) => value === true);
+const newObject = includeKeys(object, (key, value) => value === true);
 //=> {foo: true}
 
-const newObject2 = filterObject(object, ['bar']);
+const newObject2 = includeKeys(object, ['bar']);
 //=> {bar: false}
+
+const newObject = excludeKeys(object, (key, value) => value === true);
+//=> {bar: false}
+
+const newObject3 = excludeKeys(object, ['bar']);
+//=> {foo: true}
 ```
 
 ## API
 
 Symbol keys are not copied over to the new object.
 
-### filterObject(source, filter)
-### filterObject(source, includeKeys)
+### includeKeys(source, filter)
+### includeKeys(source, keys)
+### excludeKeys(source, filter)
+### excludeKeys(source, keys)
 
 #### source
 
@@ -44,11 +52,11 @@ Type: `(sourceKey, sourceValue, source) => boolean`
 
 A predicate function that detemines whether a property should be assigned to the new object.
 
-#### includeKeys
+#### keys
 
 Type: `string[]`
 
-An array of property names that should be assigned to the new object.
+An array of property names to be filtered.
 
 ## Related
 
