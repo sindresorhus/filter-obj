@@ -40,7 +40,7 @@ export function includeKeys<
 Filter object keys and values into a new object.
 
 @param object - The source object to filter properties from.
-@param predicate - Predicate function that detemines whether a property shouldn't be assigned to the new object.
+@param predicate - Predicate function that determines whether a property should not be assigned to the new object.
 @param keys - Property names that shouldn't be assigned to the new object.
 
 @example
