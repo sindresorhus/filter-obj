@@ -50,7 +50,7 @@ The source object to filter properties from.
 
 Type: `(sourceKey, sourceValue, source) => boolean`
 
-A predicate function that detemines whether a property should be assigned to the new object.
+A predicate function that detemines whether a property should be filtered.
 
 #### keys
 
