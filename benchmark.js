@@ -1,4 +1,4 @@
-import filterObj from 'filter-obj';
+import {includeKeys} from 'filter-obj';
 
 // Benchmark `filter-obj`.
 // Higher `loopCount` give more precise results but last longer.
@@ -10,7 +10,7 @@ const benchmark = function (loopCount, objectSize, predicateSize) {
 
 	console.time();
 	for (let index = 0; index < loopCount; index += 1) {
-		filterObj(bigObject, predicate);
+		includeKeys(bigObject, predicate);
 	}
 
 	console.timeEnd();

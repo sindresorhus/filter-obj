@@ -1,4 +1,4 @@
-export default function filterObject(object, predicate) {
+export function includeKeys(object, predicate) {
 	const result = {};
 
 	if (Array.isArray(predicate)) {
@@ -30,4 +30,13 @@ export default function filterObject(object, predicate) {
 	}
 
 	return result;
+}
+
+export function excludeKeys(object, predicate) {
+	if (Array.isArray(predicate)) {
+		const set = new Set(predicate);
+		return includeKeys(object, key => !set.has(key));
+	}
+
+	return includeKeys(object, (key, value, object) => !predicate(key, value, object));
 }
