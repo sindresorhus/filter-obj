@@ -5,13 +5,8 @@ export function includeKeys(object, predicate) {
 		const set = new Set(predicate);
 		for (const key of Object.keys(object)) {
 			if (set.has(key)) {
-				const value = object[key];
-				Object.defineProperty(result, key, {
-					value,
-					writable: true,
-					enumerable: true,
-					configurable: true,
-				});
+				const descriptor = Object.getOwnPropertyDescriptor(object, key);
+				Object.defineProperty(result, key, descriptor);
 			}
 		}
 	} else {
@@ -19,12 +14,8 @@ export function includeKeys(object, predicate) {
 		for (const key of Object.keys(object)) {
 			const value = object[key];
 			if (predicate(key, value, object)) {
-				Object.defineProperty(result, key, {
-					value,
-					writable: true,
-					enumerable: true,
-					configurable: true,
-				});
+				const descriptor = Object.getOwnPropertyDescriptor(object, key);
+				Object.defineProperty(result, key, descriptor);
 			}
 		}
 	}
