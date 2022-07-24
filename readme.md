@@ -33,8 +33,6 @@ const newObject3 = excludeKeys(object, ['bar']);
 
 ## API
 
-Symbol keys are not copied over to the new object.
-
 ### includeKeys(source, filter)
 ### includeKeys(source, keys)
 ### excludeKeys(source, filter)
@@ -48,15 +46,15 @@ The source object to filter properties from.
 
 #### filter
 
-Type: `(sourceKey, sourceValue, source) => boolean`
+Type: `(sourceKey: string | symbol, sourceValue: any, source: object) => boolean`
 
 A predicate function that determines whether a property should be filtered.
 
 #### keys
 
-Type: `string[]`
+Type: `(string | symbol)[]`
 
-An array of property names to be filtered.
+An array of property keys to be filtered.
 
 ## Related
 
