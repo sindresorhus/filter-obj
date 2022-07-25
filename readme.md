@@ -46,7 +46,7 @@ The source object to filter properties from.
 
 #### filter
 
-Type: `(sourceKey: string | symbol, sourceValue: any, source: object) => boolean`
+Type: `(sourceKey: string | symbol, sourceValue: unknown, source: object) => boolean`
 
 A predicate function that determines whether a property should be filtered.
 
