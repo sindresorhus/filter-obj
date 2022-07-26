@@ -22,10 +22,10 @@ test('includeKeys: array predicate', t => {
 	t.deepEqual(Object.keys(includeKeys({foo: true, bar: false}, ['foo'])), ['foo']);
 });
 
-test('includeKeys: symbol properties are omitted', t => {
+test('includeKeys: symbol properties are kept', t => {
 	const symbol = Symbol('test');
 	const input = {[symbol]: true};
-	t.is(includeKeys(input, () => true)[symbol], undefined);
+	t.true(includeKeys(input, () => true)[symbol]);
 });
 
 test('includeKeys: non-enumerable properties are omitted', t => {
@@ -75,10 +75,10 @@ test('excludeKeys: array predicate', t => {
 	t.deepEqual(Object.keys(excludeKeys({foo: true, bar: false}, ['bar'])), ['foo']);
 });
 
-test('excludeKeys: symbol properties are omitted', t => {
+test('excludeKeys: symbol properties are kept', t => {
 	const symbol = Symbol('test');
 	const input = {[symbol]: true};
-	t.is(excludeKeys(input, () => false)[symbol], undefined);
+	t.true(excludeKeys(input, () => false)[symbol]);
 });
 
 test('excludeKeys: non-enumerable properties are omitted', t => {

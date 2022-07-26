@@ -3,7 +3,7 @@ Filter object keys and values into a new object.
 
 @param object - The source object to filter properties from.
 @param predicate - Predicate function that determines whether a property should be assigned to the new object.
-@param keys - Property names that should be assigned to the new object.
+@param keys - Property keys that should be assigned to the new object.
 
 @example
 ```
@@ -21,7 +21,7 @@ const newObject2 = includeKeys(object, ['bar']);
 //=> {bar: false}
 ```
 */
-export function includeKeys<ObjectType extends Record<string, any>>(
+export function includeKeys<ObjectType extends Record<PropertyKey, any>>(
 	object: ObjectType,
 	predicate: (
 		key: keyof ObjectType,
@@ -29,7 +29,7 @@ export function includeKeys<ObjectType extends Record<string, any>>(
 	) => boolean
 ): Partial<ObjectType>;
 export function includeKeys<
-	ObjectType extends Record<string, any>,
+	ObjectType extends Record<PropertyKey, any>,
 	IncludedKeys extends keyof ObjectType,
 >(
 	object: ObjectType,
@@ -41,7 +41,7 @@ Filter object keys and values into a new object.
 
 @param object - The source object to filter properties from.
 @param predicate - Predicate function that determines whether a property should not be assigned to the new object.
-@param keys - Property names that should not be assigned to the new object.
+@param keys - Property keys that should not be assigned to the new object.
 
 @example
 ```
@@ -59,7 +59,7 @@ const newObject3 = excludeKeys(object, ['bar']);
 //=> {foo: true}
 ```
 */
-export function excludeKeys<ObjectType extends Record<string, any>>(
+export function excludeKeys<ObjectType extends Record<PropertyKey, any>>(
 	object: ObjectType,
 	predicate: (
 		key: keyof ObjectType,
@@ -67,7 +67,7 @@ export function excludeKeys<ObjectType extends Record<string, any>>(
 	) => boolean
 ): Partial<ObjectType>;
 export function excludeKeys<
-	ObjectType extends Record<string, any>,
+	ObjectType extends Record<PropertyKey, any>,
 	ExcludedKeys extends keyof ObjectType,
 >(
 	object: ObjectType,
