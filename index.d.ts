@@ -3,7 +3,7 @@ Filter object keys and values into a new object.
 
 @param object - The source object to filter properties from.
 @param predicate - Predicate function that determines whether a property should be assigned to the new object.
-@param keys - Property names that should be assigned to the new object.
+@param keys - Property keys that should be assigned to the new object.
 
 @example
 ```
@@ -41,7 +41,7 @@ Filter object keys and values into a new object.
 
 @param object - The source object to filter properties from.
 @param predicate - Predicate function that determines whether a property should not be assigned to the new object.
-@param keys - Property names that should not be assigned to the new object.
+@param keys - Property keys that should not be assigned to the new object.
 
 @example
 ```
