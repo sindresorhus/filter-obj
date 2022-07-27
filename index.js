@@ -2,9 +2,8 @@ export function includeKeys(object, predicate) {
 	const result = {};
 
 	if (Array.isArray(predicate)) {
-		const set = new Set(predicate);
-		for (const key of Reflect.ownKeys(object)) {
-			if (isEnumerable.call(object, key) && set.has(key)) {
+		for (const key of predicate) {
+			if (isEnumerable.call(object, key)) {
 				const descriptor = Object.getOwnPropertyDescriptor(object, key);
 				Object.defineProperty(result, key, descriptor);
 			}
