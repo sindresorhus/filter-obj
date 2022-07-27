@@ -1,21 +1,22 @@
 export function includeKeys(object, predicate) {
 	const result = {};
+	const descriptors = Object.getOwnPropertyDescriptors(object)
+	const keys = Reflect.ownKeys(descriptors)
 
 	if (Array.isArray(predicate)) {
 		const set = new Set(predicate);
-		for (const key of Reflect.ownKeys(object)) {
-			if (isEnumerable.call(object, key) && set.has(key)) {
-				const descriptor = Object.getOwnPropertyDescriptor(object, key);
+		for (const key of keys) {
+			const descriptor = descriptors[key]
+			if (descriptor.enumerable && set.has(key)) {
 				Object.defineProperty(result, key, descriptor);
 			}
 		}
 	} else {
-		// `for ... of Reflect.ownKeys()` is faster than `for ... of Object.entries()`.
-		for (const key of Reflect.ownKeys(object)) {
-			if (isEnumerable.call(object, key)) {
+		for (const key of keys) {
+			const descriptor = descriptors[key]
+			if (descriptor.enumerable) {
 				const value = object[key];
 				if (predicate(key, value, object)) {
-					const descriptor = Object.getOwnPropertyDescriptor(object, key);
 					Object.defineProperty(result, key, descriptor);
 				}
 			}
@@ -24,8 +25,6 @@ export function includeKeys(object, predicate) {
 
 	return result;
 }
-
-const {propertyIsEnumerable: isEnumerable} = Object.prototype;
 
 export function excludeKeys(object, predicate) {
 	if (Array.isArray(predicate)) {
