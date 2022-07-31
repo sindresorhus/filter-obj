@@ -33,7 +33,7 @@ export function includeKeys<
 	IncludedKeys extends keyof ObjectType,
 >(
 	object: ObjectType,
-	keys: readonly IncludedKeys[]
+	keys: Readonly<Iterable<IncludedKeys>>
 ): Pick<ObjectType, IncludedKeys>;
 
 /**
@@ -71,5 +71,5 @@ export function excludeKeys<
 	ExcludedKeys extends keyof ObjectType,
 >(
 	object: ObjectType,
-	keys: readonly ExcludedKeys[]
+	keys: Readonly<Iterable<ExcludedKeys>>
 ): Omit<ObjectType, ExcludedKeys>;

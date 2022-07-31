@@ -52,7 +52,7 @@ A predicate function that determines whether a property should be filtered.
 
 #### keys
 
-Type: `Array<string | symbol>`
+Type: `Iterable<string | symbol>`
 
 An array of property keys to be filtered.
 

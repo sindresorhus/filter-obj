@@ -22,6 +22,10 @@ test('includeKeys: array predicate', t => {
 	t.deepEqual(Object.keys(includeKeys({foo: true, bar: false}, ['foo'])), ['foo']);
 });
 
+test('includeKeys: iterable predicate', t => {
+	t.deepEqual(Object.keys(includeKeys({foo: true, bar: false}, new Set(['foo']))), ['foo']);
+});
+
 test('includeKeys: symbol properties are kept', t => {
 	const symbol = Symbol('test');
 	const input = {[symbol]: true};
@@ -73,6 +77,10 @@ test('excludeKeys: function predicate passes the object as argument', t => {
 
 test('excludeKeys: array predicate', t => {
 	t.deepEqual(Object.keys(excludeKeys({foo: true, bar: false}, ['bar'])), ['foo']);
+});
+
+test('excludeKeys: iterable predicate', t => {
+	t.deepEqual(Object.keys(excludeKeys({foo: true, bar: false}, new Set(['bar']))), ['foo']);
 });
 
 test('excludeKeys: symbol properties are kept', t => {
