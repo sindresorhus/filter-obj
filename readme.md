@@ -54,7 +54,7 @@ A predicate function that determines whether a property should be filtered.
 
 Type: `Iterable<string | symbol>`
 
-An array of property keys to be filtered.
+Property keys to be filtered.
 
 ## Related
 
