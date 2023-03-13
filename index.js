@@ -4,7 +4,7 @@ export function includeKeys(object, predicate) {
 	if (Array.isArray(predicate)) {
 		for (const key of predicate) {
 			const descriptor = Object.getOwnPropertyDescriptor(object, key);
-			if (descriptor?.enumerable) {
+			if (descriptor.enumerable) {
 				Object.defineProperty(result, key, descriptor);
 			}
 		}
