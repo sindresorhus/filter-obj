@@ -4,7 +4,7 @@ export function includeKeys(object, predicate) {
 	if (Array.isArray(predicate)) {
 		for (const key of predicate) {
 			const descriptor = Object.getOwnPropertyDescriptor(object, key);
-			if (descriptor?.enumerable) {
+			if (descriptor.enumerable) {
 				Object.defineProperty(result, key, descriptor);
 			}
 		}
@@ -27,8 +27,11 @@ export function includeKeys(object, predicate) {
 export function excludeKeys(object, predicate) {
 	if (Array.isArray(predicate)) {
 		const set = new Set(predicate);
-		return includeKeys(object, key => !set.has(key));
+		return includeKeys(object, (key) => !set.has(key));
 	}
 
-	return includeKeys(object, (key, value, object) => !predicate(key, value, object));
+	return includeKeys(
+		object,
+		(key, value, object) => !predicate(key, value, object)
+	);
 }
