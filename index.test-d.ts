@@ -39,3 +39,7 @@ expectType<{bar: number; [propertySymbol]: boolean}>(excludeKeys(object, ['foo']
 expectType<{foo: string; bar: number}>(excludeKeys(object, [propertySymbol]));
 expectError<typeof object>(excludeKeys(object, ['foo']));
 expectError(excludeKeys(object, ['baz']));
+
+type UnionOfObjects = { type: 'foo'; foo: string } | { type: 'bar'; bar: number };
+const object2: UnionOfObjects = { type: 'foo', foo: 'test' } as UnionOfObjects;
+expectType<{ foo: string } | { bar: number }>(excludeKeys(object2, ['type']));
