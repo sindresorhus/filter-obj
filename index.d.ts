@@ -72,4 +72,6 @@ export function excludeKeys<
 >(
 	object: ObjectType,
 	keys: readonly ExcludedKeys[]
-): Omit<ObjectType, ExcludedKeys>;
+): DistributiveOmit<ObjectType, ExcludedKeys>;
+
+type DistributiveOmit<Value, Key extends PropertyKey> = Value extends unknown ? Omit<Value, Key> : never;
