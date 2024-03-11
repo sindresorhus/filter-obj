@@ -34,7 +34,13 @@ test('includeKeys: non-enumerable properties are omitted', t => {
 });
 
 test('includeKeys: descriptors are kept as is', t => {
-	const descriptor = {get() {}, set() {}, enumerable: true, configurable: false};
+	const descriptor = {
+		get() {},
+		set() {},
+		enumerable: true,
+		configurable: false,
+	};
+
 	const input = Object.defineProperty({}, 'test', descriptor);
 	t.deepEqual(Object.getOwnPropertyDescriptor(includeKeys(input, () => true), 'test'), descriptor);
 	t.deepEqual(Object.getOwnPropertyDescriptor(includeKeys(input, ['test']), 'test'), descriptor);
@@ -87,7 +93,13 @@ test('excludeKeys: non-enumerable properties are omitted', t => {
 });
 
 test('excludeKeys: descriptors are kept as is', t => {
-	const descriptor = {get() {}, set() {}, enumerable: true, configurable: false};
+	const descriptor = {
+		get() {},
+		set() {},
+		enumerable: true,
+		configurable: false,
+	};
+
 	const input = Object.defineProperty({}, 'test', descriptor);
 	t.deepEqual(Object.getOwnPropertyDescriptor(excludeKeys(input, () => false), 'test'), descriptor);
 	t.deepEqual(Object.getOwnPropertyDescriptor(excludeKeys(input, []), 'test'), descriptor);

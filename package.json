@@ -11,10 +11,13 @@
 		"url": "https://sindresorhus.com"
 	},
 	"type": "module",
-	"exports": "./index.js",
-	"types": "./index.d.ts",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
 	"engines": {
-		"node": ">=14.16"
+		"node": ">=18"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -38,8 +41,8 @@
 		"omit"
 	],
 	"devDependencies": {
-		"ava": "^4.3.1",
-		"tsd": "^0.22.0",
-		"xo": "^0.51.0"
+		"ava": "^6.1.2",
+		"tsd": "^0.30.7",
+		"xo": "^0.58.0"
 	}
 }

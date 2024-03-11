@@ -4,19 +4,25 @@ export function includeKeys(object, predicate) {
 	if (Array.isArray(predicate)) {
 		for (const key of predicate) {
 			const descriptor = Object.getOwnPropertyDescriptor(object, key);
-			if (descriptor?.enumerable) {
-				Object.defineProperty(result, key, descriptor);
+
+			if (!descriptor?.enumerable) {
+				continue;
 			}
+
+			Object.defineProperty(result, key, descriptor);
 		}
 	} else {
 		// `Reflect.ownKeys()` is required to retrieve symbol properties
 		for (const key of Reflect.ownKeys(object)) {
 			const descriptor = Object.getOwnPropertyDescriptor(object, key);
-			if (descriptor.enumerable) {
-				const value = object[key];
-				if (predicate(key, value, object)) {
-					Object.defineProperty(result, key, descriptor);
-				}
+
+			if (!descriptor?.enumerable) {
+				continue;
+			}
+
+			const value = object[key];
+			if (predicate(key, value, object)) {
+				Object.defineProperty(result, key, descriptor);
 			}
 		}
 	}
