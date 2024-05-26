@@ -52,9 +52,9 @@ A predicate function that determines whether a property should be filtered.
 
 #### keys
 
-Type: `Array<string | symbol>`
+Type: `Array<string | symbol> | Set<string | symbol>`
 
-An array of property keys to be filtered.
+An array or [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of property keys to be filtered.
 
 ## Related
 

@@ -1,7 +1,10 @@
+// https://github.com/sindresorhus/is/tree/main?tab=readme-ov-file#why-not-just-use-instanceof-instead-of-this-package
+const isSet = input => Object.prototype.toString.call(input) === '[object Set]';
+
 export function includeKeys(object, predicate) {
 	const result = {};
 
-	if (Array.isArray(predicate)) {
+	if (Array.isArray(predicate) || isSet(input)) {
 		for (const key of predicate) {
 			const descriptor = Object.getOwnPropertyDescriptor(object, key);
 
@@ -34,6 +37,10 @@ export function excludeKeys(object, predicate) {
 	if (Array.isArray(predicate)) {
 		const set = new Set(predicate);
 		return includeKeys(object, key => !set.has(key));
+	}
+
+	if (isSet(predicate)) {
+		return includeKeys(object, key => !predicate.has(key));
 	}
 
 	return includeKeys(object, (key, value, object) => !predicate(key, value, object));
