@@ -4,7 +4,7 @@ const isSet = input => Object.prototype.toString.call(input) === '[object Set]';
 export function includeKeys(object, predicate) {
 	const result = {};
 
-	if (Array.isArray(predicate) || isSet(input)) {
+	if (Array.isArray(predicate) || isSet(predicate)) {
 		for (const key of predicate) {
 			const descriptor = Object.getOwnPropertyDescriptor(object, key);
 
