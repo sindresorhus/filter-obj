@@ -20,6 +20,7 @@ expectError<typeof object>(
 	includeKeys(object, () => false),
 );
 expectType<{foo: string}>(includeKeys(object, ['foo']));
+expectType<{foo: string}>(includeKeys(object, new Set<'foo'>(['foo'])));
 expectType<{[propertySymbol]: boolean}>(includeKeys(object, [propertySymbol]));
 expectError<typeof object>(includeKeys(object, ['foo']));
 expectError(includeKeys(object, ['baz']));
@@ -36,6 +37,7 @@ expectError<typeof object>(
 	excludeKeys(object, () => false),
 );
 expectType<{bar: number; [propertySymbol]: boolean}>(excludeKeys(object, ['foo']));
+expectType<{bar: number; [propertySymbol]: boolean}>(excludeKeys(object, new Set<'foo'>(['foo'])));
 expectType<{foo: string; bar: number}>(excludeKeys(object, [propertySymbol]));
 expectError<typeof object>(excludeKeys(object, ['foo']));
 expectError(excludeKeys(object, ['baz']));
