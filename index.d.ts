@@ -33,7 +33,7 @@ export function includeKeys<
 	IncludedKeys extends keyof ObjectType,
 >(
 	object: ObjectType,
-	keys: readonly IncludedKeys[] | Set<IncludedKeys>
+	keys: readonly IncludedKeys[] | ReadonlySet<IncludedKeys>
 ): Pick<ObjectType, IncludedKeys>;
 
 /**
