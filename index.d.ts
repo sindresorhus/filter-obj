@@ -34,7 +34,9 @@ export function includeKeys<
 >(
 	object: ObjectType,
 	keys: readonly IncludedKeys[] | ReadonlySet<IncludedKeys>
-): Pick<ObjectType, IncludedKeys>;
+): DistributivePick<ObjectType, IncludedKeys>;
+
+type DistributivePick<Value, Key extends keyof Value> = Value extends unknown ? Pick<Value, Key> : never;
 
 /**
 Filter object keys and values into a new object.

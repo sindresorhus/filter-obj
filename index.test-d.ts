@@ -7,6 +7,13 @@ const object = {
 	bar: 1,
 	[propertySymbol]: true,
 };
+type UnionOfObjects = {type: 'foo'; foo: string; [propertySymbol]: true; qux: string} | {type: 'bar'; bar: number; [propertySymbol]: false; qux: undefined};
+const object2: UnionOfObjects = { // eslint-disable-line @typescript-eslint/consistent-type-assertions
+	type: 'foo',
+	foo: 'test',
+	[propertySymbol]: true,
+	qux: 'example',
+} as UnionOfObjects;
 
 expectType<Partial<typeof object>>(
 	includeKeys(object, (key, value) => {
@@ -25,6 +32,8 @@ expectType<{[propertySymbol]: boolean}>(includeKeys(object, [propertySymbol]));
 expectError<typeof object>(includeKeys(object, ['foo']));
 expectError(includeKeys(object, ['baz']));
 
+expectType<{type: 'foo'; [propertySymbol]: true; qux: string} | {type: 'bar'; [propertySymbol]: false; qux: undefined}>(includeKeys(object2, ['type', propertySymbol, 'qux']));
+
 expectType<Partial<typeof object>>(
 	excludeKeys(object, (key, value) => {
 		expectType<'foo' | 'bar' | typeof propertySymbol>(key);
@@ -42,6 +51,4 @@ expectType<{foo: string; bar: number}>(excludeKeys(object, [propertySymbol]));
 expectError<typeof object>(excludeKeys(object, ['foo']));
 expectError(excludeKeys(object, ['baz']));
 
-type UnionOfObjects = {type: 'foo'; foo: string} | {type: 'bar'; bar: number};
-const object2: UnionOfObjects = {type: 'foo', foo: 'test'} as UnionOfObjects; // eslint-disable-line @typescript-eslint/consistent-type-assertions
-expectType<{foo: string} | {bar: number}>(excludeKeys(object2, ['type']));
+expectType<{foo: string} | {bar: number}>(excludeKeys(object2, ['type', propertySymbol, 'qux']));
